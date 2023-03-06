@@ -1,0 +1,17 @@
+{
+  "id": 30,
+  "inputProductList": [
+    {
+      "id": 1,
+      "description": "new product",
+      "supplier": "Lexus",
+      "price": 1000
+    },
+    {
+      "id": 1,
+      "description": "new product",
+      "supplier": "Sony",
+      "price": 1000
+    }
+  ]
+}
