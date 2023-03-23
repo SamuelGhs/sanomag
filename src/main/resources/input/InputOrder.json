@@ -3,21 +3,27 @@
   "inputProductList": [
     {
       "id": 1,
-      "description": "new product",
-      "supplier": "Lexus",
-      "price": 1000
+      "description": "Sony 54.6\" (Diag) Xbr Hx929 Internet Tv",
+      "supplier": "Sony",
+      "price": 750
     },
     {
       "id": 2,
-      "description": "new product 2",
-      "supplier": "Lexus",
+      "description": "Apple iPad 2 with Wi-Fi 16GB - iOS 5 - Black",
+      "supplier": "Apple",
       "price": 1000
     },
     {
       "id": 3,
-      "description": "new product",
+      "description": "Sony NWZ-E464 8GB E Series Walkman Video MP3 Player Blue",
       "supplier": "Sony",
-      "price": 1000
+      "price": 840
+    },
+    {
+      "id": 4,
+      "description": "Panasonic TC-L47E50 47\" Smart TV Viera E50 Series LED HDTV",
+      "supplier": "Panasonic",
+      "price": 600
     }
   ]
 }

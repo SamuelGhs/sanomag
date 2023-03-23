@@ -1,10 +1,12 @@
 package ro.samuel.sanomag.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import ro.samuel.sanomag.model.InputOrder;
 import ro.samuel.sanomag.model.InputProduct;
 import ro.samuel.sanomag.model.OutputProduct;
+import ro.samuel.sanomag.util.FileUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +17,7 @@ import java.util.Map;
 
 import static ro.samuel.sanomag.util.ConfigLoader.getProperty;
 import static ro.samuel.sanomag.util.FileUtil.getDestinationFile;
+import static ro.samuel.sanomag.util.FileUtil.getFile;
 import static ro.samuel.sanomag.util.FileUtil.readFile;
 import static ro.samuel.sanomag.util.FileUtil.writeJson;
 
@@ -49,12 +52,25 @@ public class OrdersService {
             String jsonString = gson.toJson(entry.getValue());
             writeJson(file, jsonString);
         }
+        String filename = "InputOrder.json";
+        String inputPath = getProperty("orders.input.path");
+        File file = getFile(inputPath + SEPARATOR + filename);
+        FileUtil.moveFileToArhive(file);
     }
 
     private InputOrder getInputOrder() throws IOException {
         String newFile = readFile(getProperty("orders.input.path") + SEPARATOR + "InputOrder.json");
         ObjectMapper objectMapper = new ObjectMapper();
-        InputOrder inputOrder = objectMapper.readValue(newFile, InputOrder.class);
+        InputOrder inputOrder = null;
+        try {
+            inputOrder = objectMapper.readValue(newFile, InputOrder.class);
+        } catch (JsonProcessingException exception) {
+            System.out.println(exception.getMessage());
+            String filename = "InputOrder.json";
+            String inputPath = getProperty("orders.input.path");
+            File file = getFile(inputPath + SEPARATOR + filename);
+            FileUtil.moveFileToError(file);
+        }
         return inputOrder;
     }
 }
