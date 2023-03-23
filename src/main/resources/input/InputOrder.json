@@ -8,7 +8,13 @@
       "price": 1000
     },
     {
-      "id": 1,
+      "id": 2,
+      "description": "new product 2",
+      "supplier": "Lexus",
+      "price": 1000
+    },
+    {
+      "id": 3,
       "description": "new product",
       "supplier": "Sony",
       "price": 1000
